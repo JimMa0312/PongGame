@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="primaryPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pong.view.OutlayerController">
+<BorderPane fx:id="primaryPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pong.view.OutlayerController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="游戏">
             <items>
-                  <MenuItem mnemonicParsing="false" text="新游戏" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleStartGame" text="新游戏">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <MenuItem mnemonicParsing="false" text="暂停游戏" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowRankList" text="排行榜" />
               <MenuItem mnemonicParsing="false" onAction="#handleCLoseAllStage" text="退出" />
@@ -25,4 +29,7 @@
         </menus>
       </MenuBar>
    </top>
+   <center>
+      <AnchorPane fx:id="gamePane" prefHeight="600.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

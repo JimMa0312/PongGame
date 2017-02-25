@@ -28,27 +28,26 @@ public class Player extends SpriteBase{
 
 
 	private void init() {
-		playerShipMinX=playerShipMaxX=x;
-		
-		playerShipMinY=0;
-		playerShipMaxY=Setting.PANE_WIDTH-image.getHeight();
+		playerShipMinX=0;
+		playerShipMaxX=Setting.PANE_WIDTH-image.getWidth();
+		playerShipMinY=playerShipMaxY=y;
 	}
 	
 	public void processInput() {
-		if (input.isMoveUp()) {
-			dy=-speed;
-		}else if (input.isMoveDown()) {
-			dy=speed;
-		}else {
-			dy=0d;
-		}
-		
 		if (input.isMoveLeft()) {
 			dx=-speed;
 		}else if (input.isMoveRight()) {
 			dx=speed;
 		}else {
 			dx=0d;
+		}
+		
+		if (input.isMoveUp()) {
+			dy=-speed;
+		}else if (input.isMoveDown()) {
+			dy=speed;
+		}else {
+			dy=0d;
 		}
 	}
 	
