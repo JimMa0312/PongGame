@@ -1,4 +1,4 @@
-package pong.model;
+package pong.config;
 
 public class Setting {
 

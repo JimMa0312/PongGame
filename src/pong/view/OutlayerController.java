@@ -16,16 +16,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import pong.config.Setting;
 import pong.model.Ball;
 import pong.model.Input;
 import pong.model.Player;
-import pong.model.Setting;
 import pong.model.SpriteBase;
 import pong.model.en.viewResources;
 
 public class OutlayerController implements Initializable, ControlledStage {
 	Random random = new Random();
-
+	AnimationTimer gameloop;
+	
 	@FXML
 	AnchorPane gamePane;
 
@@ -60,7 +61,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 		loadGame();
 		createPlayers();
 		spawnBalls();
-		AnimationTimer gameloop = new AnimationTimer() {
+		gameloop = new AnimationTimer() {
 
 			@Override
 			public void handle(long now) {
@@ -83,6 +84,8 @@ public class OutlayerController implements Initializable, ControlledStage {
 				balls.forEach(sprite->sprite.checkRemovability());
 				
 				removeSprites(balls);
+				
+				gameOver();
 			}
 		};
 
@@ -170,6 +173,17 @@ public class OutlayerController implements Initializable, ControlledStage {
 				spriteBase.removeFromLayer();
 				iter.remove();
 			}
+		}
+	}
+	
+	private void gameOver() {
+		if (balls.size()==0) {
+			gameloop.stop();
+			gameloop=null;
+			System.out.println("Game Over");
+			gamePane.getChildren().clear();
+			
+			myStageController.setStage(viewResources.playerInfor.getName());
 		}
 	}
 }

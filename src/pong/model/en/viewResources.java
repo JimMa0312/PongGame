@@ -2,7 +2,8 @@ package pong.model.en;
 
 public enum viewResources {
 	ouLayer("outlayer","outlayer.fxml"),
-	rankList("rankList","RankListView.fxml");
+	rankList("rankList","RankListView.fxml"),
+	playerInfor("playerInfor","PlayerInfor.fxml");
 	
 	private String name;
 	private String resource;

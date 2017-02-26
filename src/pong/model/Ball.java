@@ -4,6 +4,7 @@ import java.util.Random;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import pong.config.Setting;
 
 public class Ball extends SpriteBase{
 	Random random=new Random();

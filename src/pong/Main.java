@@ -19,6 +19,7 @@ public class Main extends Application {
 			myController=new StageController();
 			loadPrimaryView();
 			loadRankListView();
+			loadPlayerInforView();
 			myController.getStage(viewResources.ouLayer.getName()).setOnCloseRequest(e->handleCLoseAllStage());
 			myController.setStage(viewResources.ouLayer.getName());
 		} catch(Exception e) {
@@ -36,6 +37,10 @@ public class Main extends Application {
 	
 	private void loadRankListView(){
 		myController.loadStage(viewResources.rankList.getName(), viewResources.rankList.getResource(), StageStyle.UNDECORATED);
+	}
+	
+	private void loadPlayerInforView() {
+		myController.loadStage(viewResources.playerInfor.getName(), viewResources.playerInfor.getResource(), StageStyle.UNDECORATED);
 	}
 	
 	public static void main(String[] args) {
