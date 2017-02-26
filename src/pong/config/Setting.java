@@ -14,4 +14,6 @@ public class Setting {
 	
 	public static double PADDLE_SPEED=4.0;
 	public static double BALL_SPEED=4.0;
+	
+	public static double CHANGE_SPEED=1.02;
 }

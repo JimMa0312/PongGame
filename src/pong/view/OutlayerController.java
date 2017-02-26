@@ -65,10 +65,6 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 			@Override
 			public void handle(long now) {
-//				player.processInput();
-//				player.checkRemovability();
-//
-//				player.move();
 				
 				players.forEach(sprite->sprite.processInput());
 				players.forEach(sprite->sprite.checkRemovability());
@@ -95,6 +91,11 @@ public class OutlayerController implements Initializable, ControlledStage {
 	@FXML
 	private void handleShowRankList() {
 		myStageController.setStage(viewResources.rankList.getName());
+	}
+	
+	@FXML
+	private void handleStopGame(){
+		gameOver();
 	}
 
 	/*

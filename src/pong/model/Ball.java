@@ -20,6 +20,8 @@ public class Ball extends SpriteBase{
 		if (random.nextBoolean()) {
 			dx=-dx;
 		}
+		dy*=Setting.CHANGE_SPEED;
+		dx*=Setting.CHANGE_SPEED;
 	}
 	
 	@Override
