@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import pong.Main;
 import pong.config.Setting;
 import pong.model.Ball;
 import pong.model.Input;
@@ -47,11 +48,12 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		Main.setPlayers(players);
 	}
 
 	@FXML
 	private void handleCLoseAllStage() {
-		System.exit(0);
+		System.exit(0);                                                                                
 	}
 
 	@FXML
@@ -86,6 +88,8 @@ public class OutlayerController implements Initializable, ControlledStage {
 		};
 
 		gameloop.start();
+		players.get(0).setStartTime(System.currentTimeMillis());
+		System.out.println(players.get(0).getStartTime());
 	}
 
 	@FXML
@@ -159,8 +163,8 @@ public class OutlayerController implements Initializable, ControlledStage {
 			for (Ball ball : balls) {
 				if (player.collidesWith(ball)) {
 					ball.bounceOff(player);
-
-					player.addScore(1);
+					
+					
 				}
 			}
 		}
@@ -179,6 +183,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 	
 	private void gameOver() {
 		if (balls.size()==0) {
+			players.get(0).setEndTime(System.currentTimeMillis());
 			gameloop.stop();
 			gameloop=null;
 			System.out.println("Game Over");

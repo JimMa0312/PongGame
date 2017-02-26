@@ -1,8 +1,12 @@
 package pong;
 	
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pong.model.Player;
 import pong.model.en.viewResources;
 import pong.view.StageController;
 import javafx.scene.Scene;
@@ -12,6 +16,7 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	
 	private StageController myController;
+	private static List<Player> players = new ArrayList<>();
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -45,5 +50,13 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static List<Player> getPlayers() {
+		return players;
+	}
+
+	public static void setPlayers(List<Player> players) {
+		Main.players = players;
 	}
 }

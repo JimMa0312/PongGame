@@ -32,8 +32,6 @@ public abstract class SpriteBase {
 
 	private boolean canMove = true;
 
-	private double score = 0;
-
 	public SpriteBase() {
 		// TODO Auto-generated constructor stub
 	}
@@ -196,14 +194,7 @@ public abstract class SpriteBase {
 	public void stopMovement(){
 		this.canMove=false;
 	}
-	
-	public void addScore(double value) {
-		this.score+=value;
-	}
-	
-	public double getScore(){
-		return score;
-	}
+
 	
 	public void move(){
 		if (!canMove) {

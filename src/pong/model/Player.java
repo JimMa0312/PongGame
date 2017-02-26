@@ -15,7 +15,8 @@ public class Player extends SpriteBase{
 	
 	protected double speed;
 
-	
+	private long startTime;
+	private long endTime;
 
 	public Player(Image image, Pane layer, double x, double y, double r, double dx, double dy, double dr, double health,
 			double damage, Input input, double speed) {
@@ -79,4 +80,25 @@ public class Player extends SpriteBase{
 		
 	}
 
+
+
+	public long getStartTime() {
+		return startTime;
+	}
+
+
+
+	public void setStartTime(long startTime) {
+		this.startTime = startTime;
+	}
+
+
+
+	public long getEndTime() {
+		return endTime;
+	}
+	
+	public void setEndTime(long endTime) {
+		this.endTime = endTime;
+	}
 }
