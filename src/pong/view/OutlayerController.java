@@ -122,7 +122,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 	}
 	private Player createPlayer() {
 		Input input = new Input(myStageController.getStage(viewResources.ouLayer.getName()).getScene());
-
+		input.addListeners();
 		Image image = playerImage;
 
 		double x = (Setting.PANE_WIDTH - image.getWidth()) * 0.5;
