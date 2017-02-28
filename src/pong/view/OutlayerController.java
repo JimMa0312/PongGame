@@ -191,9 +191,11 @@ public class OutlayerController implements Initializable, ControlledStage {
 						craeteBricks();
 					}
 				}
-				for (Brick brick : bricks) {
-					if (brick.collidesWith(ball)) {
-						ball.bounceOff(brick);
+				for (int i = 0; i < bricks.size(); i++) {
+					if (bricks.get(i).collidesWith(ball)) {
+						ball.bounceOff(bricks.get(i));
+						bricks.get(i).removeFromLayer();
+						bricks.remove(i);
 					}
 				}
 			}
