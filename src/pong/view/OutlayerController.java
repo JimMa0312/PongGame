@@ -7,9 +7,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import com.sun.media.jfxmedia.events.NewFrameEvent;
+
 import javafx.animation.AnimationTimer;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
@@ -31,6 +36,12 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@FXML
 	AnchorPane gamePane;
+	@FXML
+	MenuItem startGameMenuItem;
+	@FXML
+	MenuItem endGameMenuItem;
+	
+	BooleanProperty isStartGame=new SimpleBooleanProperty(false);
 
 	Image playerImage;
 	Image ballImage;
@@ -52,6 +63,14 @@ public class OutlayerController implements Initializable, ControlledStage {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Main.setPlayers(players);
+		
+		isStartGame.addListener(ov->{
+			if (isStartGame.getValue()) {
+				endGameMenuItem.setDisable(false);
+			}else{
+				endGameMenuItem.setDisable(true);
+			}
+		});
 	}
 
 	@FXML
@@ -61,6 +80,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@FXML
 	private void handleStartGame() {
+		isStartGame.setValue(true);
 		System.out.println("Game Start");
 
 		loadGame();
@@ -102,7 +122,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@FXML
 	private void handleStopGame() {
-		gameOver();
+		endGame();
 	}
 
 	/*
@@ -215,13 +235,16 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	private void gameOver() {
 		if (balls.size() == 0) {
-			players.get(0).setEndTime(System.currentTimeMillis());
-			gameloop.stop();
-			gameloop = null;
-			System.out.println("Game Over");
-			gamePane.getChildren().clear();
-
+			endGame();
 			myStageController.setStage(viewResources.playerInfor.getName());
 		}
+	}
+	private void endGame(){
+		players.get(0).setEndTime(System.currentTimeMillis());
+		gameloop.stop();
+		gameloop = null;
+		System.out.println("Game Over");
+		gamePane.getChildren().clear();
+		isStartGame.setValue(false);
 	}
 }

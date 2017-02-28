@@ -12,11 +12,11 @@
         <menus>
           <Menu mnemonicParsing="false" text="游戏">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#handleStartGame" text="新游戏">
+                  <MenuItem fx:id="startGameMenuItem" mnemonicParsing="false" onAction="#handleStartGame" text="新游戏">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
-                  <MenuItem mnemonicParsing="false" onAction="#handleStopGame" text="结束游戏" />
+                  <MenuItem fx:id="endGameMenuItem" disable="true" mnemonicParsing="false" onAction="#handleStopGame" text="结束游戏" />
                   <MenuItem mnemonicParsing="false" onAction="#handleShowRankList" text="排行榜" />
               <MenuItem mnemonicParsing="false" onAction="#handleCLoseAllStage" text="退出" />
             </items>
