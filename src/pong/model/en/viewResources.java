@@ -20,6 +20,4 @@ public enum viewResources {
 	public String getResource() {
 		return resource;
 	}
-	
-	
 }

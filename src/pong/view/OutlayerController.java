@@ -19,6 +19,7 @@ import javafx.scene.shape.Rectangle;
 import pong.Main;
 import pong.config.Setting;
 import pong.model.Ball;
+import pong.model.Brick;
 import pong.model.Input;
 import pong.model.Player;
 import pong.model.SpriteBase;
@@ -27,15 +28,17 @@ import pong.model.en.viewResources;
 public class OutlayerController implements Initializable, ControlledStage {
 	Random random = new Random();
 	AnimationTimer gameloop;
-	
+
 	@FXML
 	AnchorPane gamePane;
 
 	Image playerImage;
 	Image ballImage;
+	Image brickImage;
 
 	List<Player> players = new ArrayList<>();
 	List<Ball> balls = new ArrayList<>();
+	List<Brick> bricks = new ArrayList<>();
 
 	private StageController myStageController;
 	@FXML
@@ -53,7 +56,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@FXML
 	private void handleCLoseAllStage() {
-		System.exit(0);                                                                                
+		System.exit(0);
 	}
 
 	@FXML
@@ -67,22 +70,22 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 			@Override
 			public void handle(long now) {
-				
-				players.forEach(sprite->sprite.processInput());
-				players.forEach(sprite->sprite.checkRemovability());
-				
-				players.forEach(sprite->sprite.move());
+
+				players.forEach(sprite -> sprite.processInput());
+				players.forEach(sprite -> sprite.checkRemovability());
+
+				players.forEach(sprite -> sprite.move());
 				balls.forEach(sprite -> sprite.move());
-				
+
 				checkCollosons();
 
-				players.forEach(sprite->sprite.updateUI());
-				balls.forEach(sprite->sprite.updateUI());
-				
-				balls.forEach(sprite->sprite.checkRemovability());
-				
+				players.forEach(sprite -> sprite.updateUI());
+				balls.forEach(sprite -> sprite.updateUI());
+
+				balls.forEach(sprite -> sprite.checkRemovability());
+
 				removeSprites(balls);
-				
+
 				gameOver();
 			}
 		};
@@ -96,9 +99,9 @@ public class OutlayerController implements Initializable, ControlledStage {
 	private void handleShowRankList() {
 		myStageController.setStage(viewResources.rankList.getName());
 	}
-	
+
 	@FXML
-	private void handleStopGame(){
+	private void handleStopGame() {
 		gameOver();
 	}
 
@@ -124,10 +127,21 @@ public class OutlayerController implements Initializable, ControlledStage {
 		circle.snapshot(null, wImage);
 
 		ballImage = wImage;
+
+		double bw = Setting.PADDLE_HEIGHT;
+		double bh = Setting.PADDLE_HEIGHT;
+
+		Rectangle Brectangle = new Rectangle(bw, bh);
+		wImage = new WritableImage((int) bw, (int) bh);
+		Brectangle.snapshot(null, wImage);
+
+		brickImage = wImage;
 	}
-	private void createPlayers(){
+
+	private void createPlayers() {
 		players.add(createPlayer());
 	}
+
 	private Player createPlayer() {
 		Input input = new Input(myStageController.getStage(viewResources.ouLayer.getName()).getScene());
 		input.addListeners();
@@ -158,18 +172,34 @@ public class OutlayerController implements Initializable, ControlledStage {
 		balls.add(ball);
 	}
 
+	private void craeteBricks() {
+		Image image = brickImage;
+		double x = 40 * random.nextInt(10);
+		double y = 40 * random.nextInt(13);
+
+		Brick brick = new Brick(image, gamePane, x, y, 0, 0, 0, 0, 1, 1);
+		bricks.add(brick);
+	}
+
 	protected void checkCollosons() {
 		for (Player player : players) {
 			for (Ball ball : balls) {
 				if (player.collidesWith(ball)) {
 					ball.bounceOff(player);
-					
-					
+
+					if (random.nextBoolean()) {
+						craeteBricks();
+					}
+				}
+				for (Brick brick : bricks) {
+					if (brick.collidesWith(ball)) {
+						ball.bounceOff(brick);
+					}
 				}
 			}
 		}
 	}
-	
+
 	private void removeSprites(List<? extends SpriteBase> spriteList) {
 		Iterator<? extends SpriteBase> iter = spriteList.iterator();
 		while (iter.hasNext()) {
@@ -180,15 +210,15 @@ public class OutlayerController implements Initializable, ControlledStage {
 			}
 		}
 	}
-	
+
 	private void gameOver() {
-		if (balls.size()==0) {
+		if (balls.size() == 0) {
 			players.get(0).setEndTime(System.currentTimeMillis());
 			gameloop.stop();
-			gameloop=null;
+			gameloop = null;
 			System.out.println("Game Over");
 			gamePane.getChildren().clear();
-			
+
 			myStageController.setStage(viewResources.playerInfor.getName());
 		}
 	}

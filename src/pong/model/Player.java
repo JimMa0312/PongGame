@@ -1,5 +1,7 @@
 package pong.model;
 
+import java.util.List;
+
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import pong.config.Setting;
