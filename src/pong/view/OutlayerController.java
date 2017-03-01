@@ -62,7 +62,6 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		Main.setPlayers(players);
 		
 		isStartGame.addListener(ov->{
 			if (isStartGame.getValue()) {
@@ -82,7 +81,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 	private void handleStartGame() {
 		isStartGame.setValue(true);
 		System.out.println("Game Start");
-
+		clearAllList();
 		loadGame();
 		createPlayers();
 		spawnBalls();
@@ -236,15 +235,24 @@ public class OutlayerController implements Initializable, ControlledStage {
 	private void gameOver() {
 		if (balls.size() == 0) {
 			endGame();
+			Main.loadPlayerInforView();
 			myStageController.setStage(viewResources.playerInfor.getName());
 		}
 	}
 	private void endGame(){
 		players.get(0).setEndTime(System.currentTimeMillis());
+		System.out.println(players.get(0).getEndTime());
+		Main.setPlayers(players);
 		gameloop.stop();
 		gameloop = null;
 		System.out.println("Game Over");
 		gamePane.getChildren().clear();
 		isStartGame.setValue(false);
+	}
+	
+	private void clearAllList(){
+		bricks.removeAll(bricks);
+		players.removeAll(players);
+		balls.removeAll(balls);
 	}
 }

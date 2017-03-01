@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import pong.Main;
+import pong.model.Player;
 import pong.model.en.viewResources;
 
 public class PlayerInforController implements Initializable, ControlledStage {
@@ -28,7 +30,7 @@ public class PlayerInforController implements Initializable, ControlledStage {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		gradeLabel.setText("00.000 S");
+		gradeLabel.setText(getGameTime()+" S");
 		playerNameTextField.setText("Player1");
 	}
 	
@@ -40,5 +42,16 @@ public class PlayerInforController implements Initializable, ControlledStage {
 	@FXML
 	private void handleESC(){
 		myController.shutDownStage(viewResources.playerInfor.getName());
+	}
+	
+	private String getGameTime(){
+		if (Main.getPlayers().size()>0) {
+			Player player=Main.getPlayers().get(0);
+			
+			double millisecond=(int)(player.getEndTime()-player.getStartTime())*0.001;
+			
+			return Double.toString(millisecond);
+		}
+		return null;
 	}
 }
