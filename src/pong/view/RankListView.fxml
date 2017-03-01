@@ -30,39 +30,39 @@
             <Label text="排位" />
             <Label text="姓名" GridPane.columnIndex="1" />
             <Label text="成绩" GridPane.columnIndex="2" />
-            <Label text="Label" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.rowIndex="4" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label text="Label" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.rowIndex="6" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label text="Label" GridPane.rowIndex="7" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <Label text="Label" GridPane.rowIndex="8" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <Label text="Label" GridPane.rowIndex="9" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="9" />
-            <Label text="Label" GridPane.rowIndex="10" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Label text="1" GridPane.rowIndex="1" />
+            <Label fx:id="player1_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="player1_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="2" GridPane.rowIndex="2" />
+            <Label fx:id="player2_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="player2_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="3" GridPane.rowIndex="3" />
+            <Label fx:id="player3_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="player3_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="4" GridPane.rowIndex="4" />
+            <Label fx:id="player4_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="player4_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="5" GridPane.rowIndex="5" />
+            <Label fx:id="player5_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="player5_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label text="6" GridPane.rowIndex="6" />
+            <Label fx:id="player6_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="player6_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label text="7" GridPane.rowIndex="7" />
+            <Label fx:id="player7_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="player7_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label text="8" GridPane.rowIndex="8" />
+            <Label fx:id="player8_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label fx:id="player8_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label text="9" GridPane.rowIndex="9" />
+            <Label fx:id="player9_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="player9_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Label text="10" GridPane.rowIndex="10" />
+            <Label fx:id="player10_name" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label fx:id="player10_score" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="10" />
          </children>
       </GridPane>
       <Label layoutX="160.0" layoutY="14.0" text="排行榜" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="14.0" />
-      <Button layoutX="145.0" layoutY="374.0" mnemonicParsing="false" prefWidth="60.0" text="关闭" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="145.0" />
+      <Button layoutX="145.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleCloseStage" prefWidth="60.0" text="关闭" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="145.0" />
    </children>
 </AnchorPane>

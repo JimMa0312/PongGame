@@ -1,5 +1,6 @@
 package pong.view;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Collections;
@@ -55,7 +56,12 @@ public class PlayerInforController implements Initializable, ControlledStage {
 	@FXML
 	private void handleOK(){
 		player=new PlayerXml(playerNameTextField.getText(), getGameTime());
+		File file=new File(Main.path);
+		if (file.exists()) {
+			Main.LoadXml();
+		}
 		List<PlayerXml> playersWithxml=Main.getPlayersWithXml();
+		playersWithxml.add(player);
 		StepComparator stepComparator=new StepComparator();
 		Collections.sort(playersWithxml, stepComparator);
 		
@@ -64,6 +70,11 @@ public class PlayerInforController implements Initializable, ControlledStage {
 				playersWithxml.remove(i);
 			}
 		}
+		Main.SaveXml();
+		
+		closeThisStage();
+		Main.loadRankListView();
+		myController.setStage(viewResources.rankList.getName());
 	}
 	
 	@FXML

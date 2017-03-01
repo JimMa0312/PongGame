@@ -116,6 +116,7 @@ public class OutlayerController implements Initializable, ControlledStage {
 
 	@FXML
 	private void handleShowRankList() {
+		Main.loadRankListView();
 		myStageController.setStage(viewResources.rankList.getName());
 	}
 

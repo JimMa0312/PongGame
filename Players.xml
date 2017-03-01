@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<players>
+    <player>
+        <name>Tom</name>
+        <score>101.467</score>
+    </player>
+    <player>
+        <name>王婷</name>
+        <score>63.57</score>
+    </player>
+    <player>
+        <name>Player1</name>
+        <score>30.544</score>
+    </player>
+    <player>
+        <name>Player1</name>
+        <score>9.086</score>
+    </player>
+</players>
