@@ -37,7 +37,7 @@ public class Input {
 	}
 	
 	/*
-	 * "输入键为 PAUSE"
+	 * "输入键为 压入"
 	 */
 	
 	public EventHandler<KeyEvent> keyPressedEventHandler=new EventHandler<KeyEvent>() {
